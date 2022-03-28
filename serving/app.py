@@ -25,7 +25,7 @@ t5_config = T5Config(
     torch_dtype="float32",
     gradient_checkpointing=False)
 model = T5ForConditionalGeneration(t5_config)
-model.load_state_dict(torch.load("trained_model/20220324_kaggle/pytorch_model.bin", map_location=torch.device('cpu')))
+model.load_state_dict(torch.load("trained_model/20220327_kaggle/pytorch_model.bin", map_location=torch.device('cpu')))
 model.eval()
 
 def generate(text):
