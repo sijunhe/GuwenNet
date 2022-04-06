@@ -1,3 +1,7 @@
 */cache
 */trained_model/*
 .DS_Store
+
+data
+modeling/models
+modeling/.ipynb_checkpoints

@@ -28,13 +28,16 @@ model = T5ForConditionalGeneration(t5_config)
 model.load_state_dict(torch.load("trained_model/20220327_kaggle/pytorch_model.bin", map_location=torch.device('cpu')))
 model.eval()
 
-def generate(text):
+def generate_classic(text):
     input_ids = tokenizer("转古文：" + text, return_tensors="pt").input_ids
     output_ids = model.generate(input_ids, num_beams=2, max_length=100)
     return tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0]
 
 def launch_gradio():
-    iface = gr.Interface(fn=generate, inputs="text", outputs="text")
+    iface = gr.Interface(
+        fn=generate_classic,
+        inputs=gr.inputs.Textbox(lines=2, default="先帝开创的事业没有完成一半，却中途去世了。"),
+        outputs="text")
     iface.launch(server_name="0.0.0.0")
 
 if __name__ == '__main__':
