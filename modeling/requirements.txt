@@ -1,2 +1,3 @@
 fastt5
 jupyterlab
+gradio

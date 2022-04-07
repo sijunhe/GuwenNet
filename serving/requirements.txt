@@ -1,3 +1,4 @@
+fastt5
 gradio
 torch
 transformers
